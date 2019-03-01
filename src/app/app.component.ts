@@ -1,3 +1,4 @@
+import { UteisShared } from './shared/uteis.shared';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gestao-funcionario-primeNG';
+
+  /* necessario Instanciar  a varivel global  para mostra  as mensagens */
+  constructor(private global: UteisShared){}
 }

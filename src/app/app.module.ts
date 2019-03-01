@@ -1,16 +1,58 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+/* === PrimeNG === */
+import { AccordionModule } from 'primeng/accordion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { DepartamentoComponent } from './departamento/departamento.component';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { PanelModule } from 'primeng/panel';
+import { InputTextModule } from 'primeng/inputtext';
+import { GrowlModule } from 'primeng/growl';
+import {TableModule} from 'primeng/table';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+
+
+/* ========== Sistema =========== */
+import { CargoComponent } from './cargo/cargo.component';
+import { FuncionarioComponent } from './funcionario/funcionario.component';
+import { DepartamentoListaComponent } from './departamento/departamento-lista/departamento-lista.component';
+import { CargoListaComponent } from './cargo/cargo-lista/cargo-lista.component';
+import { FuncionarioListaComponent } from './funcionario/funcionario-lista/funcionario-lista.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    DepartamentoComponent,
+    CargoComponent,
+    FuncionarioComponent,
+    DepartamentoListaComponent,
+    CargoListaComponent,
+    FuncionarioListaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AccordionModule,
+    BrowserAnimationsModule,
+    SplitButtonModule,
+    PanelModule,
+    InputTextModule,
+    GrowlModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableModule,
+    HttpClientModule,
+    AutoCompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
