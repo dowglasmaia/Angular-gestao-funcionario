@@ -13,18 +13,18 @@
         </div>
     </p-header>
 
-    <div class="ui-g ">
-        <div class="ui-g-12 ui-md-5">
+    <div class="ui-g ui-fluid">
+
+        <!-- Cargo -->
+        <div class="ui-g-12 ui-md-6">
             <span class="ui-float-label">
                 <input id="cargo" type="text" pInputText formControlName="nome">
                 <label for="cargo">Cargo</label>
             </span>
-        </div>
-
-    </div>
-
-    <div class="ui-g ">
-        <div class="ui-g-12 ui-md-5">
+        </div>  
+  
+        <!-- Departamento -->
+        <div class="ui-g-12 ui-md-6">
             <span class="ui-float-label">
                 <p-autoComplete id="departamento" formControlName="departamento"  [suggestions]="filtroDepartamento" (completeMethod)="getDepartamentos($event)"
                     field="nome" emptyMessage="Nenhum Registro Encontrado"></p-autoComplete>

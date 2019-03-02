@@ -1,8 +1,9 @@
 <p-panel>
+
     <p-header>
         <div class="ui-helper-clearfix">
             <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">
-                <strong> Cadastro de Departamento </strong>
+                <strong> Cadastro de Funcioinários </strong>
             </span>
 
             <a routerLink="/departamento/lista">
@@ -12,13 +13,127 @@
         </div>
     </p-header>
 
-    <div class="ui-g ">
-        <div class="ui-g-12 ui-md-6">
+    <div class="ui-g ui-fluid">
+        <!--Nome-->
+        <div class="ui-g-12 ui-md-7">
             <span class="ui-float-label">
-                <input id="departamento" type="text" pInputText>
-                <label for="departamento">Departamento</label>
+                <input id="nome" type="text" pInputText>
+                <label for="nome">Nome Completo</label>
             </span>
         </div>
+
+        <!--Cargo-->
+        <div class="ui-g-12 ui-md-5">
+            <span class="ui-float-label">
+                <p-autoComplete id="cargo" formControlName="cargo" [suggestions]="filtroCargo"
+                    (completeMethod)="getCargos($event)" field="nome" emptyMessage="Nenhum Registro Encontrado">
+                </p-autoComplete>
+                <label for="cargo">Cargo</label>
+            </span>
+        </div>
+
+
+        <!--Email-->
+        <div class="ui-g-12 ui-md-8">
+            <span class="ui-float-label">
+                <input id="email" type="text" pInputText>
+                <label for="email">E-mail</label>
+            </span>
+        </div>
+
+        <!--Telefone-->
+        <div class="ui-g-12 ui-md-4">
+            <span class="ui-float-label">
+                <p-inputMask id="telefone" type="text" mask="(99) 9 9999-9999"></p-inputMask>
+                <label for="telefone">Telefone</label>
+            </span>
+        </div>
+
+
+        <!--Data de Entrada-->
+        <div class="ui-g-12 ui-md-4">
+            <span class="ui-float-label">
+                <p-calendar id="dta_ent" formControlName="date" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+                <label for="dta_ent">Date de Entrada</label>
+            </span>
+        </div>
+
+        <!--Data de Saida-->
+        <div class="ui-g-12 ui-md-4">
+            <span class="ui-float-label">
+                <p-calendar id="dtasaida" formControlName="date" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+                <label for="dtasaida">Date de Saída</label>
+            </span>
+        </div>
+
+        <!--Salario-->
+        <div class="ui-g-12 ui-md-4 ">
+            <span class="ui-float-label ">
+                <input type="text" pInputText>
+                <label for="salario">Salário Bruto</label>
+            </span>
+        </div>
+
+        <!--Logradouro-->
+        <div class="ui-g-12 ui-md-6">
+            <span class="ui-float-label">
+                <input id="log" type="text" pInputText>
+                <label for="log">Logradouro</label>
+            </span>
+        </div>
+
+        <!--Numero-->
+        <div class="ui-g-12 ui-md-3">
+            <span class="ui-float-label">
+                <input id="num" type="text" pInputText>
+                <label for="num">Numero</label>
+            </span>
+        </div>
+
+
+        <!--CEP-->
+        <div class="ui-g-12 ui-md-3">
+            <span class="ui-float-label">
+                <p-inputMask id="cep" type="text" mask="99.999-999"></p-inputMask>
+                <label for="cep">CEP</label>
+            </span>
+        </div>
+
+        <!--Bairro-->
+        <div class="ui-g-12 ui-md-6">
+            <span class="ui-float-label">
+                <input id="bairro" type="text" pInputText>
+                <label for="bairro">Bairro</label>
+            </span>
+        </div>
+
+        <!--Complemento-->
+        <div class="ui-g-12 ui-md-6">
+            <span class="ui-float-label">
+                <input id="compl" type="text" pInputText>
+                <label for="compl">Complemento</label>
+            </span>
+        </div>
+
+        <!--Cidade-->
+        <div class="ui-g-12 ui-md-9">
+            <span class="ui-float-label">
+                <input id="cidade" type="text" pInputText>
+                <label for="cidade">Cidade</label>
+            </span>
+        </div>
+
+
+        <!--UF-->
+        <div class="ui-g-12 ui-md-3">
+            <span class="ui-float-label">
+                <p-autoComplete id="uf" formControlName="uf" [suggestions]="filtroUf" (completeMethod)="getUFs($event)"
+                    field="nome" emptyMessage="Nenhum Registro Encontrado">
+                </p-autoComplete>
+                <label for="uf">UF</label>
+            </span>
+        </div>
+
 
     </div>
 
@@ -27,4 +142,5 @@
             style="margin-right: .25em"></button>
 
     </p-footer>
+
 </p-panel>

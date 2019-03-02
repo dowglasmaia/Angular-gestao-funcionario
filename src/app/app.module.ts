@@ -18,6 +18,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { GrowlModule } from 'primeng/growl';
 import {TableModule} from 'primeng/table';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {CalendarModule} from 'primeng/calendar';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 /* ========== Sistema =========== */
@@ -52,7 +55,10 @@ import { FuncionarioListaComponent } from './funcionario/funcionario-lista/funci
     ReactiveFormsModule,
     TableModule,
     HttpClientModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    CalendarModule,
+    MultiSelectModule,
+    InputMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
