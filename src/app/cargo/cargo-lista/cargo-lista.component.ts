@@ -31,7 +31,7 @@ export class CargoListaComponent implements OnInit {
     this.cols = [
       { field: 'id', header: 'id' },
       { field: 'nome', header: 'Cargo' },
-      { field: 'departamento.nome', header: 'Departamento' }
+      { field: 'departamento', header: 'Departamento' }
 
 
     ];

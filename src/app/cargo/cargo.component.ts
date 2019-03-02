@@ -17,7 +17,7 @@ export class CargoComponent implements OnInit {
 
   filtroDepartamento: Departamento[];
 
-  cargo = new Cargo();
+  cargo: Cargo;
 
   formGroup: FormGroup;
 
@@ -34,14 +34,14 @@ export class CargoComponent implements OnInit {
     this.formGroup = this.frmBuilder.group({
       'id': new FormControl(''),
       'nome': new FormControl('', Validators.required),
-      'departamento.nome': new FormControl('', Validators.required)
+      'departamento': new FormControl('', Validators.required)
     });
 
     this.cargo = new Cargo();
 
   }
 
-  /* Buscar Cargo */
+  /* Buscar Cargo por nome*/
   getDepartamentos(event) {
     this.departamentoServeice.getDepartamentoByNome(event.query).subscribe(obj => {
       this.filtroDepartamento = obj;
