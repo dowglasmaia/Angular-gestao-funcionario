@@ -37,3 +37,16 @@ footer{
     width: 120px !important;
     text-align: center;
 }
+
+.ui-autocomplete{
+    width: 100% !important;
+  }
+
+.ui-pPassword {
+    width: 100%;
+  }
+
+  /* Botões */
+.botoesDetalhes {
+    padding-left: 0.5em;
+  }

@@ -5,7 +5,7 @@
                 <strong> Cadastro de Cargo</strong>
             </span>
 
-            <a routerLink="/departamento/lista">
+            <a routerLink="/cargo/lista">
                 <button pButton type="button" style="float:right" icon="pi pi-search" label="Listagem"
                     class="ui-button-warning"> </button>
             </a>
@@ -13,23 +13,27 @@
     </p-header>
 
     <div class="ui-g ">
-        <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-12 ui-md-5">
             <span class="ui-float-label">
-                <input id="departamento" type="text" pInputText>
-                <label for="departamento">Cargo</label>
+                <input id="cargo" type="text" pInputText>
+                <label for="cargo">Cargo</label>
             </span>
         </div>
+
     </div>
 
-
     <div class="ui-g ">
-        <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-12 ui-md-5">
             <span class="ui-float-label">
-                <input id="departamento" type="text" pInputText>
+                <p-autoComplete id="departamento"   [suggestions]="filtroDepartamento" (completeMethod)="getDepartamentos($event)"
+                    field="nome" emptyMessage="Nenhum Registro Encontrado"></p-autoComplete>
                 <label for="departamento">Departamento</label>
             </span>
         </div>
+
     </div>
+
+
 
     <p-footer>
         <button pButton type="button" icon="pi pi-save" label="Salvar" class="ui-button-info"

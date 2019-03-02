@@ -13,7 +13,7 @@ export class DepartamentoService {
 
   private url = environment.urlBase + 'departamentos/';
 
-  private departamento: Departamento;
+  private departamentos: Departamento[];
 
   constructor(
     private http: HttpClient) { }
@@ -27,5 +27,11 @@ export class DepartamentoService {
   /* Salvar*/
   salvar(obj: Departamento): Observable<Departamento> {
     return this.http.post<Departamento>(this.url, obj, environment.httpOptions);
+  }
+
+  /* listaPorNome */
+  getDepartamentoByNome(nome: string): Observable<Departamento[]> {
+    return this.http.get<Departamento[]>(this.url + 'lista/' + nome);
+
   }
 }
