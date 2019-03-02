@@ -1,5 +1,3 @@
-import { Cargo } from './../model/cargo';
-import { UteisShared } from 'src/app/shared/uteis.shared';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,6 +5,9 @@ import { Router } from '@angular/router';
 
 import { Departamento } from 'src/app/model/departamento';
 import { DepartamentoService } from './../services/departamento.service';
+import { CargoService } from 'src/app/services/cargo.service';
+import { Cargo } from './../model/cargo';
+import { UteisShared } from 'src/app/shared/uteis.shared';
 
 @Component({
   selector: 'app-cargo',
@@ -26,6 +27,7 @@ export class CargoComponent implements OnInit {
     private router: Router,
     private global: UteisShared,
     private frmBuilder: FormBuilder,
+    private cargoService: CargoService
   ) { }
 
   ngOnInit() {
@@ -48,6 +50,23 @@ export class CargoComponent implements OnInit {
     }, error => {
       this.global.getMessage(this.global.error, 'Ocorreu um Error', error);
     })
+  }
+
+  /* Salvar*/
+  salvar() {
+    this.cargoService.salvar(this.cargo).subscribe(obj => {
+      this.cargo = obj;
+      this.global.getMessage(this.global.success, 'Confirmação!', 'Registro Salvo com Sucesso!');
+      this.router.navigate(['/cargo/lista']);
+    }, error => {
+      this.global.getMessage(this.global.error, 'Ocorreu um Error', error);
+    });
+  }
+
+  /* Fazendo a Submissão dos Dados do Formulario*/
+  onSubmit(value) {
+    this.cargo = value as Cargo;
+    this.salvar();
   }
 
 }
