@@ -25,8 +25,8 @@
         <!--Cargo-->
         <div class="ui-g-12 ui-md-5">
             <span class="ui-float-label">
-                <p-autoComplete id="cargo" formControlName="cargo" [suggestions]="filtroCargo"
-                    (completeMethod)="getCargos($event)" field="nome" emptyMessage="Nenhum Registro Encontrado">
+                <p-autoComplete id="cargo" [suggestions]="filtroCargo" (completeMethod)="getCargos($event)" field="nome"
+                    emptyMessage="Nenhum Registro Encontrado">
                 </p-autoComplete>
                 <label for="cargo">Cargo</label>
             </span>
@@ -53,7 +53,7 @@
         <!--Data de Entrada-->
         <div class="ui-g-12 ui-md-4">
             <span class="ui-float-label">
-                <p-calendar id="dta_ent" formControlName="date" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+                <p-inputMask id="cep" type="text" mask="99/99/9999"></p-inputMask>
                 <label for="dta_ent">Date de Entrada</label>
             </span>
         </div>
@@ -61,7 +61,7 @@
         <!--Data de Saida-->
         <div class="ui-g-12 ui-md-4">
             <span class="ui-float-label">
-                <p-calendar id="dtasaida" formControlName="date" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+                <p-inputMask id="cep" type="text" mask="99/99/9999"></p-inputMask>
                 <label for="dtasaida">Date de Saída</label>
             </span>
         </div>
@@ -127,8 +127,8 @@
         <!--UF-->
         <div class="ui-g-12 ui-md-3">
             <span class="ui-float-label">
-                <p-autoComplete id="uf" formControlName="uf" [suggestions]="filtroUf" (completeMethod)="getUFs($event)"
-                    field="nome" emptyMessage="Nenhum Registro Encontrado">
+                <p-autoComplete id="uf" [suggestions]="filtroUf" (completeMethod)="getUFs($event)" field="nome"
+                    emptyMessage="Nenhum Registro Encontrado">
                 </p-autoComplete>
                 <label for="uf">UF</label>
             </span>

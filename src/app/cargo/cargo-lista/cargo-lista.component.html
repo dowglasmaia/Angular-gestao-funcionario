@@ -1,6 +1,7 @@
-<p-table [columns]="cols" [value]="cargos" selectionMode="single" [(selection)]=" cargoSelecionado"
-    dataKey="id" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [paginator]="true"
-    [rows]="10" emptymessage="Nenhum registro encontrado">
+<th>Cargo</th>
+<p-table [columns]="cols" [value]="cargos" selectionMode="single" [(selection)]=" cargoSelecionado" dataKey="id"
+    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [paginator]="true" [rows]="10"
+    emptymessage="Nenhum registro encontrado">
 
     <ng-template pTemplate="caption">
         <strong>Lista de Cargos </strong>
