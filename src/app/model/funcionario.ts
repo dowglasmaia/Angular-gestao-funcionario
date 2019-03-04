@@ -5,8 +5,8 @@ export class Funcionario {
     nome: string;
     email: string;
     telefone: string;
-    dataEntrada: string;
-    dataSaida: string;
+    dataAdmissao: string;
+    dataDemissao: string;
     cargo?: string;
     salario: number;
     logradouro: string;

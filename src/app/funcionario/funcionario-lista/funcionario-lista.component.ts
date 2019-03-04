@@ -33,10 +33,11 @@ export class FuncionarioListaComponent implements OnInit {
       { field: 'nome', header: 'Funcionario' },
       { field: 'email', header: 'e-Mail' },
       { field: 'telefone', header: 'Telefone' },
-      { field: 'dataEntrada', header: 'Data de Entrada' },
-      { field: 'dataSaida', header: 'Data de Saída' },
+      { field: 'dataAdmissao', header: 'Data de Entrada' },
+      { field: 'dataDemissao', header: 'Data de Saída' },
       { field: 'cargo', header: 'Cargo' },
       { field: 'salario', header: 'Salario' },
+      { field: 'cidade', header: 'Cidade' },
         
 
     ];
