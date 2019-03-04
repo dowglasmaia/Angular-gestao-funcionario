@@ -1,7 +1,13 @@
 <p-table [columns]="cols" [value]="funcionarios" selectionMode="single" [(selection)]="departamentoSelecionado"
   dataKey="id" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [paginator]="true"
-  [rows]="10" emptymessage="Nenhum registro encontrado">
+  [rows]="10" emptymessage="Nenhum registro encontrado" [scrollable]="true" >
 
+  <!-- Usando Scroll -->
+  <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+          <col *ngFor="let col of columns" style="width:160px">
+      </colgroup>
+  </ng-template>
 
   <ng-template pTemplate="caption">
     <strong>Lista de Funcionários </strong>

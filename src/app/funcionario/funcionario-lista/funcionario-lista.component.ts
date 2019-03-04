@@ -2,6 +2,7 @@ import { FuncionarioService } from './../../services/funcionario.service';
 import { Component, OnInit } from '@angular/core';
 import { Funcionario } from 'src/app/model/funcionario';
 import { UteisShared } from 'src/app/shared/uteis.shared';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-funcionario-lista',
@@ -10,8 +11,7 @@ import { UteisShared } from 'src/app/shared/uteis.shared';
 })
 export class FuncionarioListaComponent implements OnInit {
 
-
-  cols: any[];
+   cols: any[];
 
   funcionarios: Funcionario[];
 
@@ -48,6 +48,8 @@ export class FuncionarioListaComponent implements OnInit {
     this.funcionarioService.getFuncionarios().subscribe(
       lista => {
         this.funcionarios = lista;
+
+        
       }, error => {
         this.global.getMessage(this.global.error, 'Error ao Carregar Dados', error)
       });
