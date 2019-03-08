@@ -1,3 +1,15 @@
+<p-panel>
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">
+                <strong>Lista de Funcionários </strong>
+            </span>
+
+            
+        </div>
+    </p-header>
+
+
 <p-table [columns]="cols" [value]="funcionarios" selectionMode="single" [(selection)]="departamentoSelecionado"
   dataKey="id" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [paginator]="true"
   [rows]="10" emptymessage="Nenhum registro encontrado" [scrollable]="true" >
@@ -10,7 +22,7 @@
   </ng-template>
 
   <ng-template pTemplate="caption">
-    <strong>Lista de Funcionários </strong>
+    
   </ng-template>
 
   <!-- Cabeçalho da Tabela -->
@@ -51,3 +63,5 @@
   </ng-template>
 
 </p-table>
+
+</p-panel>

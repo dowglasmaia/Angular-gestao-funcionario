@@ -9,6 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'gestao-funcionario-primeNG';
 
+
+
+  visibleSidebar;
+
   /* necessario Instanciar  a varivel global  para mostra  as mensagens */
   constructor(private global: UteisShared){}
 }

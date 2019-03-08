@@ -1,59 +1,51 @@
 <!--<p-messages [(value)]="global.msgs"></p-messages>  msg -->
 <p-growl [(value)]="global.msgs"></p-growl>
+<div class="ui-g-12 ui-md-12 ui-lg-12">
+  <header>
+    <span>Gestão de Funcionário - com <strong>Angular 7 & PrimeNG</strong></span>
+  </header>
 
-<header>
-  <span>Gestão de Funcionário - com <strong>Angular 7 & PrimeNG</strong></span>
-</header>
+  <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000">
+    <h2 style="font-weight:normal">Itens de Menu</h2>
 
+    <div class="list-group">
+      <span class="list-group-item active">
+        Departamentos
+      </span>
+      <a class="list-group-item" routerLink='/departamento' (click)="visibleSidebar = false">Cadastro</a>
+      <a class="list-group-item" routerLink='/departamento/lista' (click)="visibleSidebar = false"> Lista </a>
 
+      <span class="list-group-item active">
+        Cargos
+      </span>
+      <a class="list-group-item" routerLink='/cargo' (click)="visibleSidebar = false">Cadastro</a>
+      <a class="list-group-item" routerLink='/cargo/lista' (click)="visibleSidebar = false"> Lista </a>
 
-<div class="ui-g">
-
-  <div class="ui-g-12 ui-md-3">
-    <p-accordion>
-      <p-accordionTab header="Cargo">
-        <ul>
-          <li><a routerLink='/cargo'>Cadastro</a></li>
-          <li><a routerLink='/cargo/lista'>Listagem</a></li>
-        </ul>
-      </p-accordionTab>
-      <p-accordionTab header="Departamento">
-        <ul>
-          <li><a routerLink='/departamento'>Cadastro</a></li>
-          <li><a routerLink='/departamento/lista'>Listagem</a></li>
-        </ul>
-      </p-accordionTab>
-      <p-accordionTab header="Funcionario">
-        <ul>
-          <li><a routerLink='/funcionario'>Cadastro</a></li>
-          <li><a routerLink='/funcionario/lista'>Listagem</a></li>
-        </ul>
-      </p-accordionTab>
-
-
-    </p-accordion>
-  </div>
-
-  <div class="ui-g-12 ui-md-9 ">
-
-    <div class="ui-g-12 ui-g-nopad">
-
-      <router-outlet></router-outlet>
+      <span class="list-group-item active">
+        Funcionários
+      </span>
+      <a class="list-group-item" routerLink='/funcionario' (click)="visibleSidebar = false">Cadastro</a>
+      <a class="list-group-item" routerLink='/funcionario/lista' (click)="visibleSidebar = false">Lista</a>
 
     </div>
+
+  </p-sidebar>
+
+
+  <button pButton type="button" (click)="visibleSidebar = true" icon="pi pi-angle-double-right" label="Menu"></button>
+  <hr>
+
+  <div class="ui-g-12 ui-md-12 ui-lg-12">
+    <router-outlet></router-outlet>
   </div>
 
-</div>
-
-<footer style="border: red 1px">
-  <div class="ui-g-nopad">
-
+  <div class="footer ui-g-12 ui-md-12 ui-lg-12">
+    <!-- Roda-Pé-->
     <div>
       <span>&copy;2019 | <strong>www.dowglasmaia.com</strong></span>
     </div>
 
-
-    <div class="item-rede-social">
+    <div>
       <div>
         <span>Rede Sociais</span>
       </div>
@@ -74,4 +66,4 @@
 
   </div>
 
-</footer>
+</div>
