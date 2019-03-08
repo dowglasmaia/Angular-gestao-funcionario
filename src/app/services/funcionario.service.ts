@@ -1,4 +1,4 @@
-import { Funcionario } from './../model/funcionario';
+import { Funcionario } from '../model/funcionario.dto';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment.prod';
@@ -19,7 +19,12 @@ export class FuncionarioService {
   }
 
   /* Salvar */
-  salvar(obj: Funcionario): Observable<Funcionario> {
-    return this.http.post<Funcionario>(this.url, obj, environment.httpOptions);
+  salvar(obj: Funcionario) {
+    return this.http.post(this.url, obj,
+      {
+      observe: 'response',
+      responseType: 'text',
+    });
+
   }
 }

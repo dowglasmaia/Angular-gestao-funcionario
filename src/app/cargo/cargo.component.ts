@@ -43,7 +43,7 @@ export class CargoComponent implements OnInit {
 
   }
 
-  /* Buscar Cargo por nome*/
+  /* Buscar Departamentos por nome*/
   getDepartamentos(event) {
     this.departamentoServeice.getDepartamentoByNome(event.query).subscribe(obj => {
       this.filtroDepartamento = obj;

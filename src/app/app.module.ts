@@ -21,14 +21,17 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {CalendarModule} from 'primeng/calendar';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {InputMaskModule} from 'primeng/inputmask';
+import { ObjectUtils } from 'primeng/components/utils/objectutils';
 
 
 /* ========== Sistema =========== */
 import { CargoComponent } from './cargo/cargo.component';
-import { FuncionarioComponent } from './funcionario/funcionario.component';
+
 import { DepartamentoListaComponent } from './departamento/departamento-lista/departamento-lista.component';
 import { CargoListaComponent } from './cargo/cargo-lista/cargo-lista.component';
 import { FuncionarioListaComponent } from './funcionario/funcionario-lista/funcionario-lista.component';
+import { FuncionarioComponent } from './funcionario/funcionario.component';
+
 
 
 @NgModule({
@@ -58,9 +61,12 @@ import { FuncionarioListaComponent } from './funcionario/funcionario-lista/funci
     AutoCompleteModule,
     CalendarModule,
     MultiSelectModule,
-    InputMaskModule
+    InputMaskModule,
+    
   ],
-  providers: [],
+  providers: [
+    ObjectUtils
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

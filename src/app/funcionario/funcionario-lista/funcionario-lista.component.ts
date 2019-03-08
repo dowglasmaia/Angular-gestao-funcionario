@@ -1,8 +1,9 @@
 import { FuncionarioService } from './../../services/funcionario.service';
 import { Component, OnInit } from '@angular/core';
-import { Funcionario } from 'src/app/model/funcionario';
+import { Funcionario } from 'src/app/model/funcionario.dto';
 import { UteisShared } from 'src/app/shared/uteis.shared';
 import { LazyLoadEvent } from 'primeng/api';
+import { ObjectUtils } from 'primeng/components/utils/objectutils';
 
 @Component({
   selector: 'app-funcionario-lista',
@@ -11,7 +12,7 @@ import { LazyLoadEvent } from 'primeng/api';
 })
 export class FuncionarioListaComponent implements OnInit {
 
-   cols: any[];
+  cols: any[];
 
   funcionarios: Funcionario[];
 
@@ -21,7 +22,8 @@ export class FuncionarioListaComponent implements OnInit {
 
   constructor(
     private global: UteisShared,
-    private funcionarioService: FuncionarioService) { }
+    private funcionarioService: FuncionarioService,
+    private objectUtils: ObjectUtils) { }
 
   ngOnInit() {
 
@@ -38,10 +40,15 @@ export class FuncionarioListaComponent implements OnInit {
       { field: 'cargo', header: 'Cargo' },
       { field: 'salario', header: 'Salario' },
       { field: 'cidade', header: 'Cidade' },
-        
+
 
     ];
   }
+  /* Metodo Para Resolver a Questão  dos campos com vinculações a outros objetos*/
+  resolveFieldData(data, field) {
+    return this.objectUtils.resolveFieldData(data, field);
+  }
+
 
   /* buscar Todos*/
   getFuncionarios() {
@@ -49,7 +56,7 @@ export class FuncionarioListaComponent implements OnInit {
       lista => {
         this.funcionarios = lista;
 
-        
+
       }, error => {
         this.global.getMessage(this.global.error, 'Error ao Carregar Dados', error)
       });

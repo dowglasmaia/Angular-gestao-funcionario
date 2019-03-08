@@ -18,6 +18,14 @@ export class CargoService {
     return this.http.get<Cargo[]>(this.url);
   }
 
+  /* lstar Cargo por Nome*/
+  getCargosPorNome(nome: string): Observable<Cargo[]> {
+    return this.http.get<Cargo[]>(this.url + 'lista/' + nome);
+  }
+
+
+
+
   /* Salvar */
   salvar(obj: Cargo): Observable<Cargo> {
     return this.http.post<Cargo>(this.url, obj, environment.httpOptions);
