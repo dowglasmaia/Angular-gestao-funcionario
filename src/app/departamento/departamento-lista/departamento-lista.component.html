@@ -1,45 +1,55 @@
-<p-table [columns]="cols" [value]="departamentos" selectionMode="single" [(selection)]="departamentoSelecionado"
-    dataKey="id" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [paginator]="true"
-    [rows]="10" emptymessage="Nenhum registro encontrado">
+<p-panel>
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">
+                <strong>Lista de Departamentos </strong>
+            </span>
 
-    <ng-template pTemplate="caption">
-        <strong>Lista de Departamentos </strong>
-    </ng-template>
 
-    <!-- Cabeçalho da Tabela -->
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th class="codigo">Código</th>
-            <th>Departamento</th>
-        </tr>
-    </ng-template>
-
-    <!-- Corpo da Tabela -->
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
-
-    <!-- Roda Pe da Tabela -->
-    <ng-template pTemplate="summary">
-        <!-- Butões -->
-
-        <div style="text-align: left" class="botoesDetalhes">
-            <p-button label="Novo" icon="pi pi-plus" styleClass="ui-button-info" [routerLink]="['/departamento']">
-            </p-button><!-- Novo -->
-
-            <p-button label="Editar" icon="pi pi-pencil" styleClass="ui-button-warning" [disabled]="botoesDesabilitado"
-                [routerLink]="['/departamento',getDepartamentoID()]">
-            </p-button>
-
-            <!-- Mostra detalhes -->
-            <p-button label="Excluir" icon="pi pi-trash" styleClass="ui-button-danger" [disabled]="botoesDesabilitado"
-                (onClick)="excluir()"></p-button>
-            <!-- Excluir -->
         </div>
-    </ng-template>
+    </p-header>
 
-</p-table>
+
+    <p-table [columns]="cols" [value]="departamentos" selectionMode="single" [(selection)]="departamentoSelecionado"
+        dataKey="id" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [paginator]="true"
+        [rows]="10" emptymessage="Nenhum registro encontrado">
+
+
+        <!-- Cabeçalho da Tabela -->
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th class="codigo">Código</th>
+                <th>Departamento</th>
+            </tr>
+        </ng-template>
+
+        <!-- Corpo da Tabela -->
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+
+        <!-- Roda Pe da Tabela -->
+        <ng-template pTemplate="summary">
+            <!-- Butões -->
+
+            <div style="text-align: left" class="botoesDetalhes">
+                <p-button label="Novo" icon="pi pi-plus" styleClass="ui-button-info" [routerLink]="['/departamento']">
+                </p-button><!-- Novo -->
+
+                <p-button label="Editar" icon="pi pi-pencil" styleClass="ui-button-warning"
+                    [disabled]="botoesDesabilitado" [routerLink]="['/departamento',getDepartamentoID()]">
+                </p-button>
+
+                <!-- Mostra detalhes -->
+                <p-button label="Excluir" icon="pi pi-trash" styleClass="ui-button-danger"
+                    [disabled]="botoesDesabilitado" (onClick)="excluir()"></p-button>
+                <!-- Excluir -->
+            </div>
+        </ng-template>
+
+    </p-table>
+</p-panel>

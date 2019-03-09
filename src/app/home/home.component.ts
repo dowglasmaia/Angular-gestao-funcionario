@@ -9,7 +9,15 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  display: boolean = false;
+
+
   ngOnInit() {
+  }
+
+
+  showDialog() {
+    this.display = true;
   }
 
 }

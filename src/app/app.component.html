@@ -1,69 +1,80 @@
 <!--<p-messages [(value)]="global.msgs"></p-messages>  msg -->
 <p-growl [(value)]="global.msgs"></p-growl>
-<div class="ui-g-12 ui-md-12 ui-lg-12">
-  <header>
-    <span>Gestão de Funcionário - com <strong>Angular 7 & PrimeNG</strong></span>
-  </header>
-
-  <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000">
-    <h2 style="font-weight:normal">Itens de Menu</h2>
-
-    <div class="list-group">
-      <span class="list-group-item active">
-        Departamentos
-      </span>
-      <a class="list-group-item" routerLink='/departamento' (click)="visibleSidebar = false">Cadastro</a>
-      <a class="list-group-item" routerLink='/departamento/lista' (click)="visibleSidebar = false"> Lista </a>
-
-      <span class="list-group-item active">
-        Cargos
-      </span>
-      <a class="list-group-item" routerLink='/cargo' (click)="visibleSidebar = false">Cadastro</a>
-      <a class="list-group-item" routerLink='/cargo/lista' (click)="visibleSidebar = false"> Lista </a>
-
-      <span class="list-group-item active">
-        Funcionários
-      </span>
-      <a class="list-group-item" routerLink='/funcionario' (click)="visibleSidebar = false">Cadastro</a>
-      <a class="list-group-item" routerLink='/funcionario/lista' (click)="visibleSidebar = false">Lista</a>
-
-    </div>
-
-  </p-sidebar>
-
-
-  <button pButton type="button" (click)="visibleSidebar = true" icon="pi pi-angle-double-right" label="Menu"></button>
-  <hr>
-
+<div class="container">
   <div class="ui-g-12 ui-md-12 ui-lg-12">
-    <router-outlet></router-outlet>
-  </div>
+    <header>
+      <div style="float: left">
+          <button pButton type="button" (click)="visibleSidebar = true" icon="pi pi-angle-double-right"
+          label="Menu"></button>
+      </div>     
 
-  <div class="footer ui-g-12 ui-md-12 ui-lg-12">
-    <!-- Roda-Pé-->
-    <div>
-      <span>&copy;2019 | <strong>www.dowglasmaia.com</strong></span>
-    </div>
+      <span>Gestão de Funcionário - com <strong>Angular 7 & PrimeNG</strong></span>
+    </header>
 
-    <div>
-      <div>
-        <span>Rede Sociais</span>
+    <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000">
+      <div style="text-align: center">
+        <a routerLink='' (click)="visibleSidebar = false">
+          <img src="./../assets/img/logo.svg">
+        </a>
+
+
       </div>
-      <!--Facebook-->
-      <img src="../assets/img/face.png" style="margin-right: 10px">
 
-      <!--LinkedIn-->
-      <a href="http://www.linkedin.com/in/dowglasmaia" style="margin-right:10px" target="_new">
-        <img src="../assets/img/link.png">
-      </a>
 
-      <!--Skype-->
-      <img src="../assets/img/skype.png" style="margin-right: 10px">
+      <div class="list-group">
+        <span class="list-group-item active">
+          Departamento
+        </span>
+        <a class="list-group-item" routerLink='/departamento' (click)="visibleSidebar = false">Cadastro</a>
+        <a class="list-group-item" routerLink='/departamento/lista' (click)="visibleSidebar = false"> Lista </a>
 
-      <!--Canal Youtube-->
-      <img src="../assets/img/youtube.png" style="margin-right: 10px">
+        <span class="list-group-item active">
+          Cargo
+        </span>
+        <a class="list-group-item" routerLink='/cargo' (click)="visibleSidebar = false">Cadastro</a>
+        <a class="list-group-item" routerLink='/cargo/lista' (click)="visibleSidebar = false"> Lista </a>
+
+        <span class="list-group-item active">
+          Funcionário
+        </span>
+        <a class="list-group-item" routerLink='/funcionario' (click)="visibleSidebar = false">Cadastro</a>
+        <a class="list-group-item" routerLink='/funcionario/lista' (click)="visibleSidebar = false">Lista</a>
+
+      </div>
+
+    </p-sidebar>
+   
+    <div class="ui-g-12 ui-md-12 ui-lg-12">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="footer ui-g-12 ui-md-12 ui-lg-12">
+      <!-- Roda-Pé-->
+      <div>
+        <span>
+          <a href="#">
+            <strong>www.dowglasmaia.com</strong>
+          </a> |
+          &copy; 2019
+        </span>
+
+      </div>
+
+      <div>
+        <!--Facebook-->
+        <a href="https://www.facebook.com/dowglasmaia19" style="margin-right:10px" target="_new">
+          <img src="../assets/img/face.png" style="margin-right: 10px">
+        </a>
+
+        <!--LinkedIn-->
+        <a href="http://www.linkedin.com/in/dowglasmaia" style="margin-right:10px" target="_new">
+          <img src="../assets/img/link.png">
+        </a>
+
+      </div>
     </div>
 
   </div>
+
 
 </div>

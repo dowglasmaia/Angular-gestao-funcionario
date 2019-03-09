@@ -23,6 +23,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {InputMaskModule} from 'primeng/inputmask';
 import { ObjectUtils } from 'primeng/components/utils/objectutils';
 import {SidebarModule} from 'primeng/sidebar';
+import {DialogModule} from 'primeng/dialog';
+import {CardModule} from 'primeng/card';
 
 
 /* ========== Sistema =========== */
@@ -63,7 +65,9 @@ import { FuncionarioComponent } from './funcionario/funcionario.component';
     CalendarModule,
     MultiSelectModule,
     InputMaskModule,
-    SidebarModule
+    SidebarModule,
+    DialogModule,
+    CardModule
     
   ],
   providers: [
