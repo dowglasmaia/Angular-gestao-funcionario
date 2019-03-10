@@ -10,12 +10,19 @@ import { FuncionarioListaComponent } from './funcionario/funcionario-lista/funci
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'departamento', component: DepartamentoComponent },
+
+  { path: 'departamento/novo', component: DepartamentoComponent },
   { path: 'departamento/lista', component: DepartamentoListaComponent },
-  { path: 'cargo', component:CargoComponent },
+  { path: 'departamento/:id', component: DepartamentoComponent },
+
+  { path: 'cargo/novo', component: CargoComponent },
   { path: 'cargo/lista', component: CargoListaComponent },
-  { path: 'funcionario', component: FuncionarioComponent },
-  { path: 'funcionario/lista', component: FuncionarioListaComponent }
+  { path: 'cargo/:id', component: CargoComponent },
+
+  { path: 'funcionario/novo', component: FuncionarioComponent },
+  { path: 'funcionario/lista', component: FuncionarioListaComponent },
+  { path: 'funcionario/:id', component: FuncionarioComponent },
+
 ];
 
 @NgModule({

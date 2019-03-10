@@ -1,6 +1,6 @@
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 import { Departamento } from 'src/app/model/departamento';
@@ -8,6 +8,7 @@ import { DepartamentoService } from './../services/departamento.service';
 import { CargoService } from 'src/app/services/cargo.service';
 import { Cargo } from './../model/cargo';
 import { UteisShared } from 'src/app/shared/uteis.shared';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cargo',
@@ -24,23 +25,37 @@ export class CargoComponent implements OnInit {
 
   constructor(
     private departamentoServeice: DepartamentoService,
+
     private router: Router,
+    private route: ActivatedRoute,
     private global: UteisShared,
     private frmBuilder: FormBuilder,
-    private cargoService: CargoService
+    private cargoService: CargoService,
+
   ) { }
 
   ngOnInit() {
-
     /* incluir os Dados do Formulario*/
     this.formGroup = this.frmBuilder.group({
-      'id': new FormControl(''),
-      'nome': new FormControl('', Validators.required),
-      'departamento': new FormControl('', Validators.required)
+      'id': [null],
+      'nome': ['', [Validators.required]],
+      'departamento': ['', [Validators.required]],
     });
 
     this.cargo = new Cargo();
 
+    if (this.router.url !== '/cargo/novo') {
+      /* pegando o cargo selecionado e mostrando o mesmo na Tela */
+      let id = this.route.snapshot.paramMap.get('id');
+      this.cargoService.getCargoPorID(parseInt(id, 0)).subscribe(obj => {
+        this.cargo = obj; /* cargo recebe os Dados escritos */
+
+        /* Vinculando o FormGroup com o Objeto Selecioando*/
+        this.formGroup.patchValue(this.cargo);
+      }, error => {
+        this.global.getMessage(this.global.error, 'Error ao Selecionar Cargo', '');
+      });
+    }
   }
 
   /* Buscar Departamentos por nome*/
@@ -63,10 +78,26 @@ export class CargoComponent implements OnInit {
     });
   }
 
+  /* Salvar*/
+  update() {
+    this.cargoService.update(this.cargo).subscribe(obj => {
+      this.cargo = obj as Cargo;
+      this.global.getMessage(this.global.success, 'Confirmação!', 'Registro Atualizado com Sucesso!');
+      this.router.navigate(['/cargo/lista']);
+    }, error => {
+      this.global.getMessage(this.global.error, 'Ocorreu um Error', error);
+    });
+  }
+
   /* Fazendo a Submissão dos Dados do Formulario*/
   onSubmit(value) {
     this.cargo = value as Cargo;
-    this.salvar();
+    if (this.cargo.id == null) {
+      this.salvar();
+    } else {
+      this.update();
+    }
+
   }
 
 }

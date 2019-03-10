@@ -25,6 +25,8 @@ import { ObjectUtils } from 'primeng/components/utils/objectutils';
 import {SidebarModule} from 'primeng/sidebar';
 import {DialogModule} from 'primeng/dialog';
 import {CardModule} from 'primeng/card';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 
 /* ========== Sistema =========== */
@@ -34,6 +36,7 @@ import { DepartamentoListaComponent } from './departamento/departamento-lista/de
 import { CargoListaComponent } from './cargo/cargo-lista/cargo-lista.component';
 import { FuncionarioListaComponent } from './funcionario/funcionario-lista/funcionario-lista.component';
 import { FuncionarioComponent } from './funcionario/funcionario.component';
+
 
 
 
@@ -67,11 +70,13 @@ import { FuncionarioComponent } from './funcionario/funcionario.component';
     InputMaskModule,
     SidebarModule,
     DialogModule,
-    CardModule
+    CardModule,
+    ConfirmDialogModule,
     
   ],
   providers: [
-    ObjectUtils
+    ObjectUtils,
+    ConfirmationService, /* Declarado para Usar o Model de Confrimação - ( https://www.primefaces.org/primeng-6.1.6/#/confirmdialog )*/
   ],
   bootstrap: [AppComponent]
 })

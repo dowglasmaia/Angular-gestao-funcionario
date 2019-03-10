@@ -25,6 +25,7 @@ export class FuncionarioService {
       observe: 'response',
       responseType: 'text',
     });
-
   }
+
+  
 }

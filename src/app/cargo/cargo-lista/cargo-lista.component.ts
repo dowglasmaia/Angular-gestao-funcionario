@@ -1,7 +1,12 @@
-import { Cargo } from './../../model/cargo';
 import { Component, OnInit } from '@angular/core';
+
 import { UteisShared } from 'src/app/shared/uteis.shared';
 import { CargoService } from 'src/app/services/cargo.service';
+import { Cargo } from './../../model/cargo';
+
+import { ConfirmationService } from 'primeng/api';
+import { ObjectUtils } from 'primeng/components/utils/objectutils';
+
 
 @Component({
   selector: 'app-cargo-lista',
@@ -21,7 +26,9 @@ export class CargoListaComponent implements OnInit {
 
   constructor(
     private global: UteisShared,
-    private cargoService: CargoService) { }
+    private cargoService: CargoService,
+    private confirmationService: ConfirmationService,
+    private objectUtils: ObjectUtils) { }
 
   ngOnInit() {
 
@@ -31,12 +38,17 @@ export class CargoListaComponent implements OnInit {
     this.cols = [
       { field: 'id', header: 'id' },
       { field: 'nome', header: 'Cargo' },
-      { field: 'departamento', header: 'Departamento' }
-
+      { field: 'departamento.nome', header: 'Departamento' }
 
     ];
 
   }
+
+  /* Metodo Para Resolver a Questão  dos campos com vinculações a outros objetos*/
+  resolveFieldData(data, field) {
+    return this.objectUtils.resolveFieldData(data, field);
+  }
+
 
   /* buscar Todos*/
   getCargos() {
@@ -50,11 +62,30 @@ export class CargoListaComponent implements OnInit {
 
   /* buscar por id*/
   getCargoID() {
-
+    return this.cargoSelecionado == null ? null : this.cargoSelecionado.id;
+   
   }
 
   /* Excluir*/
   excluir() {
+    this.confirmationService.confirm({
+      message: 'Desejas realmente excluir este registro?',
+      header: 'Confirmação',
+      icon: 'pi pi-exclamation-triangle',
+
+      accept: () => {
+        this.cargoService.excluir(this.cargoSelecionado.id).subscribe(x => {
+          this.getCargos(); // atualiza a lista apos a exluisão
+          this.botoesDesabilitado = true;
+          this.global.getMessage(this.global.info, 'Job post successfully deleted!', '');
+        }, error => {
+          this.global.getMessage(this.global.error, 'Error deleting data!', '');
+        });
+      },
+      reject: () => {
+
+      }
+    });
 
   }
 

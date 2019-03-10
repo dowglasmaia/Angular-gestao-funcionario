@@ -23,12 +23,25 @@ export class CargoService {
     return this.http.get<Cargo[]>(this.url + 'lista/' + nome);
   }
 
-
-
+  /* Buscar Por ID*/
+  getCargoPorID(id: number){
+    return this.http.get<Cargo>(this.url + id);
+  }
 
   /* Salvar */
   salvar(obj: Cargo): Observable<Cargo> {
     return this.http.post<Cargo>(this.url, obj, environment.httpOptions);
+  }
+
+   /* Update */
+   update(obj: Cargo): Observable<any> {
+    return this.http.put(this.url + obj.id, obj, environment.httpOptions);
+  }
+  
+
+
+  excluir(id: number): Observable<{}>{
+    return this.http.delete(this.url + id);
   }
 }
 

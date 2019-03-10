@@ -4,8 +4,6 @@
             <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">
                 <strong>Lista de Cargos </strong>
             </span>
-
-
         </div>
     </p-header>
 
@@ -27,7 +25,7 @@
         <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr [pSelectableRow]="rowData">
                 <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
+                    {{resolveFieldData(rowData,col.field)}}
                 </td>
             </tr>
         </ng-template>
@@ -35,22 +33,23 @@
         <!-- Roda Pe da Tabela -->
         <ng-template pTemplate="summary">
             <!-- Butões -->
-
             <div style="text-align: left">
-                <p-button label="Novo" icon="pi pi-plus" styleClass="ui-button-info" [routerLink]="['/cargo']">
+
+                <p-button label="Novo" icon="pi pi-plus" styleClass="ui-button-info" [routerLink]="['/cargo/novo']">
                 </p-button><!-- Novo -->
 
                 <p-button label="Editar" icon="pi pi-pencil" styleClass="ui-button-warning"
                     [disabled]="botoesDesabilitado" [routerLink]="['/cargo',getCargoID()]">
                 </p-button>
 
-                <!-- Mostra detalhes -->
-                <p-button label="Excluir" icon="pi pi-trash" styleClass="ui-button-danger"
-                    [disabled]="botoesDesabilitado" (onClick)="excluir()"></p-button>
                 <!-- Excluir -->
+                <button pButton type="button" icon="pi pi-trash" label="Excluir" class="ui-button-danger"
+                    [disabled]="botoesDesabilitado" (onClick)="excluir()"> </button>
+
+
+
             </div>
         </ng-template>
-
     </p-table>
 
 </p-panel>
