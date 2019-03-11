@@ -4,6 +4,9 @@ import { Departamento } from 'src/app/model/departamento';
 import { DepartamentoService } from './../../services/departamento.service';
 import { UteisShared } from 'src/app/shared/uteis.shared';
 
+import { ConfirmationService } from 'primeng/api';
+import { ObjectUtils } from 'primeng/components/utils/objectutils';
+
 
 @Component({
   selector: 'app-departamento-lista',
@@ -24,7 +27,9 @@ export class DepartamentoListaComponent implements OnInit {
 
   constructor(
     private global: UteisShared,
-    private departamentoService: DepartamentoService) { }
+    private departamentoService: DepartamentoService,
+    private confirmationService: ConfirmationService,
+    private objectUtils: ObjectUtils) { }
 
   ngOnInit() {
 
@@ -34,11 +39,15 @@ export class DepartamentoListaComponent implements OnInit {
     this.cols = [
       { field: 'id', header: 'id' },
       { field: 'nome', header: 'Departamento' }
-
-
     ];
 
   }
+
+   /* Metodo Para Resolver a Questão  dos campos com vinculações a outros objetos*/
+   resolveFieldData(data, field) {
+    return this.objectUtils.resolveFieldData(data, field);
+  }
+
 
   /* buscar Todos*/
   getDepartamentos() {
@@ -50,13 +59,35 @@ export class DepartamentoListaComponent implements OnInit {
       });
   }
 
+
+
   /* buscar por id*/
   getDepartamentoID() {
+    return this.departamentoSelecionado == null ? null : this.departamentoSelecionado.id;
 
   }
 
   /* Excluir*/
   excluir() {
+    this.confirmationService.confirm({
+      message: 'Desejas realmente excluir este registro?',
+      header: 'Confirmação',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Sim',
+      rejectLabel: 'Não',
+
+      accept: () => {
+        this.departamentoService.excluir(this.departamentoSelecionado.id).subscribe(x => {
+          this.getDepartamentos(); // atualiza a lista apos a exluisão
+          this.botoesDesabilitado = true;
+          this.global.getMessage(this.global.info, 'Department Deleted Successfully', '');
+        }, error => {
+          this.global.getMessage(this.global.error, 'Error deleting data!', '');
+        });
+      },
+
+      reject: () => { }
+    });
 
   }
 
@@ -69,5 +100,4 @@ export class DepartamentoListaComponent implements OnInit {
   onRowUnselect(event) {
     this.botoesDesabilitado = true;
   }
-
 }

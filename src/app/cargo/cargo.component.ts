@@ -78,7 +78,7 @@ export class CargoComponent implements OnInit {
     });
   }
 
-  /* Salvar*/
+  /* Update*/
   update() {
     this.cargoService.update(this.cargo).subscribe(obj => {
       this.cargo = obj as Cargo;

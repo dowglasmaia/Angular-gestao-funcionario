@@ -34,4 +34,20 @@ export class DepartamentoService {
     return this.http.get<Departamento[]>(this.url + 'lista/' + nome);
 
   }
+
+  /* Buscar Por ID */
+  getFindById(id: number) {
+    return this.http.get<Departamento>(this.url + id);
+
+  }
+
+  /* Update */
+  update(obj: Departamento): Observable<Departamento> {
+    return this.http.put<Departamento>(this.url + obj.id, obj, environment.httpOptions);
+  }
+
+  /* Excluir */
+  excluir(id: number): Observable<{}>{
+    return this.http.delete(this.url + id);
+  }
 }

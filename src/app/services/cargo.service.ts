@@ -39,7 +39,6 @@ export class CargoService {
   }
   
 
-
   excluir(id: number): Observable<{}>{
     return this.http.delete(this.url + id);
   }
