@@ -63,7 +63,7 @@ export class CargoListaComponent implements OnInit {
   /* buscar por id*/
   getCargoID() {
     return this.cargoSelecionado == null ? null : this.cargoSelecionado.id;
-   
+
   }
 
   /* Excluir*/
@@ -72,6 +72,9 @@ export class CargoListaComponent implements OnInit {
       message: 'Desejas realmente excluir este registro?',
       header: 'Confirmação',
       icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Sim',
+      rejectLabel: 'Não',
+      
 
       accept: () => {
         this.cargoService.excluir(this.cargoSelecionado.id).subscribe(x => {

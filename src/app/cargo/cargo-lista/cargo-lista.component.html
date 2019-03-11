@@ -1,3 +1,4 @@
+<p-confirmDialog></p-confirmDialog>
 <p-panel>
     <p-header>
         <div class="ui-helper-clearfix">
@@ -35,17 +36,19 @@
             <!-- Butões -->
             <div style="text-align: left">
 
+                <!-- Novo -->
                 <p-button label="Novo" icon="pi pi-plus" styleClass="ui-button-info" [routerLink]="['/cargo/novo']">
-                </p-button><!-- Novo -->
+                </p-button>
 
+                <!-- Editar -->
                 <p-button label="Editar" icon="pi pi-pencil" styleClass="ui-button-warning"
                     [disabled]="botoesDesabilitado" [routerLink]="['/cargo',getCargoID()]">
                 </p-button>
 
                 <!-- Excluir -->
-                <button pButton type="button" icon="pi pi-trash" label="Excluir" class="ui-button-danger"
-                    [disabled]="botoesDesabilitado" (onClick)="excluir()"> </button>
-
+                <p-button label="Excluir" icon="pi pi-pencil" styleClass="ui-button-danger"
+                    [disabled]="botoesDesabilitado" (onClick)="excluir()">
+                </p-button>
 
 
             </div>
