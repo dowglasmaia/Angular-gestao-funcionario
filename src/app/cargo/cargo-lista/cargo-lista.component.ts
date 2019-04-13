@@ -63,6 +63,7 @@ export class CargoListaComponent implements OnInit {
   /* buscar por id*/
   getCargoID() {
     return this.cargoSelecionado == null ? null : this.cargoSelecionado.id;
+   // console.log(this.cargoSelecionado);
 
   }
 

@@ -1,12 +1,12 @@
-import { Cidade } from './cidade';
-import { Cargo } from './cargo';
 import { Estado } from './estatdo';
+import { Cargo } from './cargo';
+import { Cidade } from './cidade';
 
 export class Funcionario {
     id: number;
-    nome: string;
-    email: string;
-    telefone: string;
+    nome: string; 
+    email:string;
+    telefone:string;  
     dataAdmissao: Date;
     dataDemissao: Date;
     salario: number;
@@ -14,9 +14,9 @@ export class Funcionario {
     numero: string;
     bairro: string;
     cep: string;
-    complemento: string;
-    cidade: Cidade;
-    cargo: Cargo;
-    estado: Estado;
+    complemento?: string;
+    cidade?: Cidade;
+    cargo?: Cargo;
+    estado?: Estado;
 
 }

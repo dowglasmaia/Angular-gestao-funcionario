@@ -50,97 +50,110 @@
                 </span>
             </div>
 
+            <!--Salario-->
+            <div class="ui-g-12 ui-md-4 ">
+                <span class="ui-float-label ">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">$</span>
+                        <input type="text" pInputText placeholder="Salário Bruto" formControlName="salario">
+                        <span class="ui-inputgroup-addon">.00</span>
+                    </div>
+                </span>
+            </div>
+
 
             <!--Data de Entrada-->
             <div class="ui-g-12 ui-md-4">
                 <span class="ui-float-label">
-                    <p-calendar id="dta_ent" formControlName="dataAdmissao" dateFormat="dd/mm/yy" [showIcon]="true">
-                    </p-calendar>
-                    <label for="dta_ent">Date de Entrada</label>
+                    <div class="input-group">
+                        <input id="dta_entrada" type="date" pInputText formControlName="dataAdmissao">
+                        <span class="input-group-addon" id="dta_entrada">Admissão</span>
+                    </div>
                 </span>
             </div>
 
             <!--Data de Saida-->
             <div class="ui-g-12 ui-md-4">
                 <span class="ui-float-label">
-                    <p-calendar id="dtasaida" formControlName="dataDemissao" dateFormat="dd/mm/yy" [showIcon]="true">
-                    </p-calendar>
-                    <label for="dtasaida">Date de Saída</label>
+                    <div class="input-group">
+                        <input id="dta_saida" type="date" pInputText formControlName="dataDemissao">
+                        <span class="input-group-addon" id="dta_saida">Demissão</span>
+                    </div>
                 </span>
             </div>
 
-            <!--Salario-->
+
+            <!--logradouro-->
             <div class="ui-g-12 ui-md-4 ">
-                <span class="ui-float-label ">
-                    <input type="text" id="salario" pInputText formControlName="salario">
-                    <label for="salario">Salário Bruto</label>
-                </span>
-            </div>
-
-             <!--logradouro-->
-             <div class="ui-g-12 ui-md-4 ">
                 <span class="ui-float-label ">
                     <input type="text" id="logradouro" pInputText formControlName="logradouro">
                     <label for="logradouro">Logradouro</label>
                 </span>
             </div>
 
-             <!--numero-->
-             <div class="ui-g-12 ui-md-4 ">
+            <!--numero-->
+            <div class="ui-g-12 ui-md-4 ">
                 <span class="ui-float-label ">
                     <input type="text" id="numero" pInputText formControlName="numero">
                     <label for="numero">Número</label>
                 </span>
             </div>
 
-             <!--bairro-->
-             <div class="ui-g-12 ui-md-4 ">
+            <!--bairro-->
+            <div class="ui-g-12 ui-md-4 ">
                 <span class="ui-float-label ">
                     <input type="text" id="bairro" pInputText formControlName="bairro">
                     <label for="bairro">Bairro</label>
                 </span>
             </div>
 
-             <!--cep-->
-             <div class="ui-g-12 ui-md-4 ">
+            <!--cep-->
+            <div class="ui-g-12 ui-md-4 ">
                 <span class="ui-float-label ">
                     <input type="text" id="cep" pInputText formControlName="cep">
                     <label for="cep">Cep</label>
                 </span>
             </div>
 
-             <!--complemento-->
-             <div class="ui-g-12 ui-md-4 ">
+            <!--complemento-->
+            <div class="ui-g-12 ui-md-4 ">
                 <span class="ui-float-label ">
                     <input type="text" id="complemento" pInputText formControlName="complemento">
                     <label for="complemento">Complemento</label>
                 </span>
             </div>
 
-             <!--cidade-->
-             <div class="ui-g-12 ui-md-4 ">
-                <span class="ui-float-label ">
-                    <input type="text" pInputText formControlName="cidade">
+            <!--cidade  -->
+
+            <div class="ui-g-12 ui-md-4">
+                <span class="ui-float-label">
+                    <p-autoComplete id="cidade" [suggestions]="filtroCidades" formControlName="cidade"
+                        (completeMethod)="getCidadesPorNome($event)" field="nome" emptyMessage="Nenhum Registro Encontrado">
+                    </p-autoComplete>
                     <label for="cidade">Cidade</label>
                 </span>
             </div>
 
-           <!--UF-->
-        <div class="ui-g-12 ui-md-4">
-            <span class="ui-float-label">
-                <p-autoComplete id="uf" [suggestions]="filtroEstados" formControlName="estado" (completeMethod)="getEstados($event)" field="nome"
-                    emptyMessage="Nenhum Registro Encontrado">
-                </p-autoComplete>
-                <label for="uf">UF</label>
-            </span>
-        </div>
+            <!--UF-->
+            <div class="ui-g-12 ui-md-4">
+                <span class="ui-float-label">
+                    <p-autoComplete id="uf" [suggestions]="filtroEstados" formControlName="estado"
+                        (completeMethod)="getEstados($event)" field="nome" emptyMessage="Nenhum Registro Encontrado">
+                    </p-autoComplete>
+                    <label for="uf">UF</label>
+                </span>
+            </div>
 
-            
+
         </div>
 
         <p-footer>
-            <button pButton type="submit" icon="pi pi-save" [disabled]="!formGroup.valid" label="Salvar" class="ui-button-success"
-                style="margin-right: .25em"></button>
+            <button pButton type="submit" icon="pi pi-save" [disabled]="!formGroup.valid" label="Salvar"
+                class="ui-button-success" style="margin-right: .25em"></button>
+
+            <p-button type="button" label="Novo" icon="pi pi-plus" [disabled]="!formGroup.valid"
+                styleClass="ui-button-info" [routerLink]="['/funcionario/novo']">
+            </p-button><!-- Novo -->
 
         </p-footer>
 

@@ -2,7 +2,7 @@ import { FuncionarioService } from './../../services/funcionario.service';
 import { Component, OnInit } from '@angular/core';
 import { Funcionario } from 'src/app/model/funcionario.dto';
 import { UteisShared } from 'src/app/shared/uteis.shared';
-import { LazyLoadEvent } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { ObjectUtils } from 'primeng/components/utils/objectutils';
 
 @Component({
@@ -16,14 +16,15 @@ export class FuncionarioListaComponent implements OnInit {
 
   funcionarios: Funcionario[];
 
-  departamentoSelecionado: Funcionario;
+  funcionarioSelecionado: Funcionario;
 
   botoesDesabilitado: boolean = true;
 
   constructor(
     private global: UteisShared,
     private funcionarioService: FuncionarioService,
-    private objectUtils: ObjectUtils) { }
+    private objectUtils: ObjectUtils,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
 
@@ -36,10 +37,13 @@ export class FuncionarioListaComponent implements OnInit {
       { field: 'email', header: 'e-Mail' },
       { field: 'telefone', header: 'Telefone' },
       { field: 'dataAdmissao', header: 'Data de Entrada' },
-      { field: 'dataDemissao', header: 'Data de Saída' },
-      { field: 'cargo', header: 'Cargo' },
+      { field: 'dataDemissao', header: 'Data de Saída' },      
       { field: 'salario', header: 'Salario' },
-      { field: 'cidade', header: 'Cidade' },
+      { field: 'logradouro', header: 'Logradouro' },
+      { field: 'cep', header: 'Cep' },
+      { field: 'cargo.nome', header: 'Cargo' },
+      { field: 'cidade.nome', header: 'Cidade' },
+      { field: 'estado.nome', header: 'UF' },
 
 
     ];
@@ -55,23 +59,43 @@ export class FuncionarioListaComponent implements OnInit {
     this.funcionarioService.getFuncionarios().subscribe(
       lista => {
         this.funcionarios = lista;
-
-
       }, error => {
         this.global.getMessage(this.global.error, 'Error ao Carregar Dados', error)
       });
   }
 
   /* buscar por id*/
-  getFuncionarioID() {
+  getFuncionarioID() {    
+      return this.funcionarioSelecionado == null ? null : this.funcionarioSelecionado.id;
+      console.log(this.funcionarioSelecionado);
 
   }
 
-  /* Excluir*/
-  excluir() {
+ /* Excluir*/
+ excluir() {
+  this.confirmationService.confirm({
+    message: 'Desejas realmente excluir este registro?',
+    header: 'Confirmação',
+    icon: 'pi pi-exclamation-triangle',
+    acceptLabel: 'Sim',
+    rejectLabel: 'Não',
+    
 
-  }
+    accept: () => {
+      this.funcionarioService.excluir(this.funcionarioSelecionado.id).subscribe(x => {
+        this.getFuncionarios(); // atualiza a lista apos a exluisão
+        this.botoesDesabilitado = true;
+        this.global.getMessage(this.global.info, 'Funcionario Excluido com Sucesso!', '');
+      }, error => {
+        this.global.getMessage(this.global.error, 'Error deleting data!', '');
+      });
+    },
+    reject: () => {
 
+    }
+  });
+
+}
   /* ao selecionar um item - habilita os butões */
   onRowSelect(event) {
     this.botoesDesabilitado = false;
