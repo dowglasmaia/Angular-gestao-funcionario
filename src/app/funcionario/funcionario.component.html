@@ -20,6 +20,9 @@
                     <input id="nome" type="text" pInputText formControlName="nome">
                     <label for="nome">Nome Completo</label>
                 </span>
+                <p-message severity="error" text="Informe o nome do Funcioanrio"
+                    *ngIf="!formGroup.controls['nome'].valid&&formGroup.controls['nome'].dirty">
+                </p-message>
             </div>
 
             <!--Cargo-->
@@ -30,6 +33,9 @@
                     </p-autoComplete>
                     <label for="cargo">Cargo</label>
                 </span>
+                <p-message severity="error" text="Um Cargo deve ser Informado"
+                    *ngIf="!formGroup.controls['cargo'].valid&&formGroup.controls['cargo'].dirty">
+                </p-message>
             </div>
 
 
@@ -39,6 +45,9 @@
                     <input id="email" type="text" pInputText formControlName="email">
                     <label for="email">E-mail</label>
                 </span>
+                <p-message severity="error" text="Informe um e-Mail"
+                    *ngIf="!formGroup.controls['email'].valid&&formGroup.controls['email'].dirty">
+                </p-message>
             </div>
 
             <!--Telefone-->
@@ -48,6 +57,9 @@
                     </p-inputMask>
                     <label for="telefone">Telefone</label>
                 </span>
+                <p-message severity="error" text="Informe um Telefone"
+                    *ngIf="!formGroup.controls['telefone'].valid&&formGroup.controls['telefone'].dirty">
+                </p-message>
             </div>
 
             <!--Salario-->
@@ -59,6 +71,9 @@
                         <span class="ui-inputgroup-addon">.00</span>
                     </div>
                 </span>
+                <p-message severity="error" text="Informe o Salário do Funcionario"
+                    *ngIf="!formGroup.controls['salario'].valid&&formGroup.controls['salario'].dirty">
+                </p-message>
             </div>
 
 
@@ -70,6 +85,9 @@
                         <span class="input-group-addon" id="dta_entrada">Admissão</span>
                     </div>
                 </span>
+                <p-message severity="error" text="Informe a Data de Admissão"
+                    *ngIf="!formGroup.controls['dataAdmissao'].valid&&formGroup.controls['dataAdmissao'].dirty">
+                </p-message>
             </div>
 
             <!--Data de Saida-->
@@ -89,6 +107,9 @@
                     <input type="text" id="logradouro" pInputText formControlName="logradouro">
                     <label for="logradouro">Logradouro</label>
                 </span>
+                <p-message severity="error" text="Informe o nome da Rua!"
+                    *ngIf="!formGroup.controls['logradouro'].valid&&formGroup.controls['logradouro'].dirty">
+                </p-message>
             </div>
 
             <!--numero-->
@@ -97,6 +118,9 @@
                     <input type="text" id="numero" pInputText formControlName="numero">
                     <label for="numero">Número</label>
                 </span>
+                <p-message severity="error" text="Informe o Numero para o Endereço."
+                    *ngIf="!formGroup.controls['numero'].valid&&formGroup.controls['numero'].dirty">
+                </p-message>
             </div>
 
             <!--bairro-->
@@ -105,14 +129,21 @@
                     <input type="text" id="bairro" pInputText formControlName="bairro">
                     <label for="bairro">Bairro</label>
                 </span>
+                <p-message severity="error" text="O Campo Bairro é Obrigatório"
+                    *ngIf="!formGroup.controls['bairro'].valid&&formGroup.controls['bairro'].dirty">
+                </p-message>
             </div>
 
             <!--cep-->
             <div class="ui-g-12 ui-md-4 ">
-                <span class="ui-float-label ">
-                    <input type="text" id="cep" pInputText formControlName="cep">
+                <span class="ui-float-label">
+                    <p-inputMask id="cep" type="text" mask="99.999-999" formControlName="cep">
+                    </p-inputMask>
                     <label for="cep">Cep</label>
                 </span>
+                <p-message severity="error" text="O Campo Cep é Obrigatório"
+                    *ngIf="!formGroup.controls['cep'].valid&&formGroup.controls['cep'].dirty">
+                </p-message>
             </div>
 
             <!--complemento-->
@@ -124,14 +155,17 @@
             </div>
 
             <!--cidade  -->
-
             <div class="ui-g-12 ui-md-4">
                 <span class="ui-float-label">
                     <p-autoComplete id="cidade" [suggestions]="filtroCidades" formControlName="cidade"
-                        (completeMethod)="getCidadesPorNome($event)" field="nome" emptyMessage="Nenhum Registro Encontrado">
+                        (completeMethod)="getCidadesPorNome($event)" field="nome"
+                        emptyMessage="Nenhum Registro Encontrado">
                     </p-autoComplete>
                     <label for="cidade">Cidade</label>
                 </span>
+                <p-message severity="error" text="Informe uma Cidade"
+                    *ngIf="!formGroup.controls['cidade'].valid&&formGroup.controls['cidade'].dirty">
+                </p-message>
             </div>
 
             <!--UF-->
@@ -142,6 +176,9 @@
                     </p-autoComplete>
                     <label for="uf">UF</label>
                 </span>
+                <p-message severity="error" text="Informe um Estado"
+                    *ngIf="!formGroup.controls['estado'].valid&&formGroup.controls['estado'].dirty">
+                </p-message>
             </div>
 
 
@@ -151,8 +188,8 @@
             <button pButton type="submit" icon="pi pi-save" [disabled]="!formGroup.valid" label="Salvar"
                 class="ui-button-success" style="margin-right: .25em"></button>
 
-            <p-button type="button" label="Novo" icon="pi pi-plus" [disabled]="!formGroup.valid"
-                styleClass="ui-button-info" [routerLink]="['/funcionario/novo']">
+            <p-button type="button" label="Novo" icon="pi pi-plus" styleClass="ui-button-info"
+                [routerLink]="['/funcionario/novo']">
             </p-button><!-- Novo -->
 
         </p-footer>

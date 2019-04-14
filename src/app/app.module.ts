@@ -27,6 +27,8 @@ import {DialogModule} from 'primeng/dialog';
 import {CardModule} from 'primeng/card';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 /* ========== Sistema =========== */
@@ -72,6 +74,8 @@ import { FuncionarioComponent } from './funcionario/funcionario.component';
     DialogModule,
     CardModule,
     ConfirmDialogModule,
+    MessagesModule,
+    MessageModule
     
   ],
   providers: [
